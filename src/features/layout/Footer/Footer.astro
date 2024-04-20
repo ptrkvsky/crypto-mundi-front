@@ -4,7 +4,13 @@ const year = new Date().getFullYear();
 
 <footer>
   <div class="container grid">
-    <span>© {year} <span class="logo">Crypto Mundi</span></span>
+    <p>
+      <span>© {year} <span class="logo">Crypto Mundi</span></span>
+      <a class="link" href="/p/mentions-legales" class="link"
+        >Mentions légales</a
+      >
+    </p>
+
     <p class="warning">
       Crypto Mundi est éducatif et ne constitue pas une offre de vente ni une
       sollicitation d'achat de valeurs mobilières. Crypto Mundi n'est pas un
@@ -23,11 +29,19 @@ const year = new Date().getFullYear();
 </footer>
 
 <style>
+  .link {
+    display: block;
+    color: var(--blue-500);
+    display: block;
+    margin-top: 8px;
+    text-decoration: none;
+  }
   .grid {
     display: grid;
     grid-template-columns: 4fr 9fr;
     @media screen and (max-width: 768px) {
       grid-template-columns: 1fr;
+      padding: 0 8px;
     }
   }
   footer {

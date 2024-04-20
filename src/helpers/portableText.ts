@@ -18,8 +18,10 @@ const customComponents = {
     // Ex. 2: rendering a custom `link` annotation
     internalLink: ({ value, text }: any) => {
       const slug = value.slug.current;
+      const { title } = value;
+      console.log(value);
 
-      return `<a title={title} href="${slug}">
+      return `<a title="${title}" href="${slug}">
           ${text}
         </a>`;
     },

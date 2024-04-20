@@ -1,5 +1,4 @@
 ---
-import { getImage } from "astro:assets";
 import { Image } from "astro:assets";
 import type { Post } from "src/generated/graphql";
 import clock from "@assets/clock.svg";
@@ -10,25 +9,20 @@ interface Props {
 }
 
 const { post } = Astro.props;
-
-const optimizedBackground = await getImage({
-  src: post?.thumbnail?.asset?.url ?? "",
-  format: "webp",
-  quality: 75,
-  sizes: [357, 452],
-  width: 452,
-  height: 310,
-});
 ---
 
 <article class="post">
   {
     post?.thumbnail?.asset?.url && (
-      <a
-        style={`background-image: url(${optimizedBackground.src});`}
-        class="wrapper-image"
-        href={`/article/${post.slug?.current}`}
-      />
+      <a class="wrapper-image" href={`/article/${post.slug?.current}`}>
+        <Image
+          class="illu"
+          alt={post.title ?? ""}
+          src={`${post?.thumbnail?.asset?.url}?auto=format&max-w=452`}
+          widths={[357, 452]}
+          inferSize
+        />
+      </a>
     )
   }
   <div class="card-content">
@@ -64,8 +58,6 @@ const optimizedBackground = await getImage({
     .wrapper-image {
       height: 310px;
       display: block;
-      background-size: cover;
-      background-position: center;
     }
 
     .illu {

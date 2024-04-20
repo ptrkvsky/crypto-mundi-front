@@ -29,25 +29,33 @@ interface Props {
 }
 
 const { post } = Astro.props;
+
+const image = `${post?.mainImageUrl}?auto=format&max-w=650`;
 ---
 
-<Layout title={post.seoTitle ?? ""}>
+<Layout
+  title={post.seoTitle ?? ""}
+  description={post.seoDescription ?? ""}
+  image={image}
+>
   <div class="post-container">
+    <h1>
+      {post.title}
+    </h1>
+
+    <p class="summary">{post.summary}</p>
+
     {
       post?.mainImageUrl && (
         <Image
           loading="eager"
           inferSize
           alt={post.title ?? ""}
-          src={`${post?.mainImageUrl}?auto=format&max-w=650`}
+          src={image}
           class="post-image"
         />
       )
     }
-
-    <h1>
-      {post.title}
-    </h1>
 
     <p>
       <span class="author">Johan Allard</span> • <date class="date"
@@ -55,17 +63,15 @@ const { post } = Astro.props;
       >
     </p>
 
-    <p class="summary">{post.summary}</p>
-
     <PortableText portableText={post.body} />
   </div>
   <style>
     .post-image {
-      margin-bottom: 48px;
+      margin: 48px 0;
       border-radius: 40px;
 
       @media screen and (max-width: 980px) {
-        margin-bottom: 20px;
+        margin: 24px 0;
         border-radius: 20px;
       }
     }
@@ -73,10 +79,12 @@ const { post } = Astro.props;
     .summary {
       font-size: 24px;
       line-height: 1.5;
+      margin: 40px 0 0 0;
 
       @media screen and (max-width: 980px) {
         font-size: 20px;
         line-height: 1.5;
+        margin: 24px 0;
       }
     }
 

@@ -7,8 +7,12 @@ import type { SanityHome } from "@features/home/interfaces/SanityHome";
 
 const dataHome = await fetchSanity<SanityHome>(queryHome);
 const posts = dataHome?.allPost ?? [];
+const title =
+  "Actualités Crypto - Toutes les dernières nouvelles sur les crypto-monnaies | Crypto Mundi";
+const description =
+  "Restez informé avec les dernières actualités sur les crypto-monnaies. Analyses, tendances et nouvelles sur Bitcoin, Ethereum et plus encore sur Crypto Mundi.";
 ---
 
-<Layout title=" ">
+<Layout title={title} description={description}>
   <SectionPosts posts={posts} />
 </Layout>
