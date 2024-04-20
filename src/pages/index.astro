@@ -1,0 +1,14 @@
+---
+import fetchSanity from "@helpers/fetchSanity";
+import { Layout } from "@features/layout/Layout";
+import { queryHome } from "@features/home/queries/queryHome.ts";
+import { SectionPosts } from "@features/blog/components/SectionPosts";
+import type { SanityHome } from "@features/home/interfaces/SanityHome";
+
+const dataHome = await fetchSanity<SanityHome>(queryHome);
+const posts = dataHome?.allPost ?? [];
+---
+
+<Layout title=" ">
+  <SectionPosts posts={posts} />
+</Layout>

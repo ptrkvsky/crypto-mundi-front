@@ -1,0 +1,97 @@
+---
+import { Image } from "astro:assets";
+import type { Post } from "src/generated/graphql";
+import clock from "@assets/clock.svg";
+import { getDateFR } from "@helpers/getDateFR";
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="post">
+  {
+    post?.thumbnail?.asset?.url && (
+      <a href={`/article/${post.slug?.current}`}>
+        <Image
+          loading="eager"
+          inferSize
+          alt={post.title ?? ""}
+          src={`${post?.thumbnail?.asset?.url}?auto=format&max-w=452`}
+        />
+      </a>
+    )
+  }
+  <div class="card-content">
+    <h3>{post.title}</h3>
+
+    <div class="card-bottom">
+      <time>
+        <img class="clock" src={clock.src} alt="clock" />
+        <span></span>{post.readingTime} min.
+      </time>
+
+      <date>
+        {getDateFR(post._createdAt)}
+      </date>
+    </div>
+  </div>
+
+  <style>
+    .post {
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      overflow: hidden;
+      border: 1px solid var(--blue-100);
+      transition: all 0.7s ease-out;
+
+      &:hover {
+        box-shadow: 0 0 40px var(--blue-100);
+      }
+    }
+
+    .clock {
+      max-width: 24px;
+    }
+
+    .card-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .card-bottom {
+      margin-top: 32px;
+    }
+
+    time {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: var(--blue-900);
+      gap: 4px;
+    }
+
+    date {
+      text-align: right;
+      color: var(--blue-900);
+      font-size: 14px;
+    }
+
+    .card-content {
+      padding: 24px 40px 40px 40px;
+    }
+
+    h3 {
+      letter-spacing: -1.28px;
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 28px;
+      font-weight: 300;
+      line-height: 1.2;
+    }
+  </style>
+</article>

@@ -1,0 +1,65 @@
+:root {
+  --blue-50: hsl(220, 100%, 95%); /* #e9f1ff */
+  --blue-100: hsl(220, 100%, 92%); /* #d6e6ff */
+  --blue-200: hsl(220, 100%, 86%); /* #b6d0ff */
+  --blue-300: hsl(220, 100%, 75%); /* #8aafff */
+  --blue-400: hsl(220, 100%, 63%); /* #5c80ff */
+  --blue-500: hsl(225, 100%, 49%); /* #3751ff */
+  --blue-600: hsl(235, 100%, 32%); /* #1520ff */
+  --blue-700: hsl(236, 85%, 34%); /* #1e25f8 */
+  --blue-800: hsl(243, 88%, 31%); /* #0c14c7 */
+  --blue-900: hsl(235, 75%, 35%); /* #141e9b */
+  --blue-950: hsl(240, 70%, 20%); /* #0c0f5a */
+
+  --black: #000;
+  --gray-500: #6b7094;
+  --gray400: #98a2b3;
+  --gray600: #475467;
+  --gray900: #101828;
+  --grey-300: #e4e6f1;
+  --light-purple: #dab4ff;
+  --light-yellow: #fff3b1;
+  --pop-green: #77ffae;
+  --primary100: #f4ebff;
+  --primary600: #7f56d9;
+  --primary700: #6941c6;
+  --white: white;
+  --yellow: #fdd95a;
+
+  --logo: #ff553f;
+  --logo-hover: #ff7755;
+
+  --container-width: 1440px;
+
+  --font-text: "Sohne", serif;
+  --font-heading: "Alpina", sans-serif;
+}
+
+html {
+  font-family: var(--font-text);
+  background: #fff;
+  color: var(--blue-950);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: var(--container-width);
+
+  @media (max-width: 768px) {
+    padding: 0 8px;
+  }
+}

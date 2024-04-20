@@ -1,0 +1,74 @@
+---
+import type { Post } from "src/generated/graphql";
+import { CardPost } from "@features/blog/components/CardPost";
+import { SectionTitle } from "@features/blog/components/SectionTitle";
+import { SectionLabel } from "@features/blog/components/SectionLabel";
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+<section>
+  <header class="header">
+    <div class="wrapper-title">
+      <SectionLabel>Les dernières</SectionLabel>
+      <SectionTitle>Actualités.</SectionTitle>
+    </div>
+  </header>
+  <div class="posts">
+    {posts.map((post) => <CardPost post={post} />)}
+  </div>
+</section>
+
+<style>
+  section {
+    margin: 80px 0;
+    @media screen and (max-width: 768px) {
+      margin: 12px 0;
+    }
+  }
+
+  .posts {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 48px;
+
+    @media screen and (max-width: 980px) {
+      grid-template-columns: 1fr 1fr;
+      margin-top: 24px;
+    }
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+      margin-top: 12px;
+    }
+  }
+
+  .wrapper-title {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .accroche {
+    font-size: 18px;
+    color: var(--blue-950);
+    max-width: 900px;
+    line-height: 1.4;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 40px;
+
+    @media screen and (max-width: 768px) {
+      display: block;
+      margin-bottom: 18px;
+    }
+  }
+</style>

@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "Alpina";
+  src: url("/fonts/GT-Alpina-Standard-Light.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sohne";
+  src: url("/fonts/Sohne-Buch.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

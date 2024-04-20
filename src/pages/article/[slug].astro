@@ -1,0 +1,209 @@
+---
+import { queryAllPosts } from "@features/blog/queries/queryAllPosts";
+import type { Post } from "src/generated/graphql";
+import { sanityClient } from "@helpers/sanityClient";
+import PortableText from "@components/PortableText.astro";
+import { Layout } from "@features/layout/Layout";
+import Image from "astro/components/Image.astro";
+import { getDateFR } from "@helpers/getDateFR";
+
+export async function getStaticPaths() {
+  const sanityPosts = await sanityClient.fetch<Post[]>(queryAllPosts);
+
+  return sanityPosts?.map((post) => {
+    const param = {
+      params: {
+        slug: post?.slug,
+      },
+      props: {
+        post,
+      },
+    };
+    return param;
+  });
+}
+
+interface Props {
+  post: any;
+}
+
+const { post } = Astro.props;
+---
+
+<Layout title={post.seoTitle ?? ""}>
+  <div class="post-container">
+    {
+      post?.mainImageUrl && (
+        <Image
+          loading="eager"
+          inferSize
+          alt={post.title ?? ""}
+          src={`${post?.mainImageUrl}?auto=format&max-w=650`}
+          class="post-image"
+        />
+      )
+    }
+
+    <h1>
+      {post.title}
+    </h1>
+
+    <p>
+      <span class="author">Johan Allard</span> • <date class="date"
+        >{getDateFR(post._createdAt)}</date
+      >
+    </p>
+
+    <p class="summary">{post.summary}</p>
+
+    <PortableText portableText={post.body} />
+  </div>
+  <style>
+    .post-image {
+      margin-bottom: 48px;
+      border-radius: 40px;
+
+      @media screen and (max-width: 980px) {
+        margin-bottom: 20px;
+        border-radius: 20px;
+      }
+    }
+
+    .author {
+      color: var(--blue-500);
+    }
+
+    h1 {
+      letter-spacing: -3.5px;
+      width: 100%;
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 64px;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--blue-950);
+
+      margin-bottom: 24px;
+
+      @media screen and (max-width: 980px) {
+        letter-spacing: -2.28px;
+        margin-bottom: 24px;
+        font-size: 38px;
+        line-height: 38px;
+      }
+    }
+
+    .summary {
+      font-size: 24px;
+      line-height: 1.5;
+
+      @media screen and (max-width: 980px) {
+        font-size: 20px;
+        line-height: 1.5;
+      }
+    }
+
+    .post-container {
+      max-width: 650px;
+      margin: 40px auto;
+
+      @media screen and (max-width: 980px) {
+        margin: 12px auto;
+      }
+
+      color: var(--blue-950);
+      letter-spacing: -0.28px;
+      margin-bottom: 20px;
+      font-size: 18px;
+      line-height: 28px;
+
+      p {
+        margin-bottom: 20px;
+      }
+
+      a {
+        color: var(--blue-500);
+        text-decoration: underline;
+      }
+
+      h2 {
+        font-size: 48px;
+        font-weight: 400;
+        line-height: 1.2;
+        color: var(--blue-950);
+        margin: 40px 0 30px;
+
+        @media screen and (max-width: 980px) {
+          letter-spacing: -2.28px;
+          margin: 20px 0 16px;
+          font-size: 30px;
+          line-height: 1.2;
+        }
+      }
+
+      /* h3 */
+      h3 {
+        font-size: 36px;
+        font-weight: 500;
+        line-height: 1.3;
+        color: var(--blue-850);
+        margin-bottom: 25px;
+
+        @media screen and (max-width: 980px) {
+          letter-spacing: -2.28px;
+          margin: 20px 0 16px;
+          font-size: 30px;
+          line-height: 1.2;
+        }
+      }
+
+      /* h4 */
+      h4 {
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 1.4;
+        color: var(--blue-800);
+        margin-bottom: 20px;
+
+        @media screen and (max-width: 980px) {
+          letter-spacing: -2.28px;
+          margin: 20px 0 16px;
+          font-size: 30px;
+          line-height: 1.2;
+        }
+      }
+
+      /* h5 */
+      h5 {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.5;
+        color: var(--blue-750);
+        margin-bottom: 15px;
+
+        @media screen and (max-width: 980px) {
+          letter-spacing: -2.28px;
+          margin: 20px 0 16px;
+          font-size: 30px;
+          line-height: 1.2;
+        }
+      }
+
+      /* h6 */
+      h6 {
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 1.6;
+        color: var(--blue-700);
+        margin-bottom: 10px;
+
+        @media screen and (max-width: 980px) {
+          letter-spacing: -2.28px;
+          margin: 20px 0 16px;
+          font-size: 30px;
+          line-height: 1.2;
+        }
+      }
+    }
+  </style>
+</Layout>

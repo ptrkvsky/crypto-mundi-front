@@ -1,0 +1,23 @@
+---
+import BtcTicker from "@features/layout/header/BtcTicker/BtcTicker.astro";
+import Logo from "../Logo/Logo.astro";
+---
+
+<header class="header">
+  <div class="container">
+    <Logo />
+    <BtcTicker />
+  </div>
+</header>
+
+<style>
+  .header {
+    .container {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+</style>

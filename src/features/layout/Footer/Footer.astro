@@ -1,0 +1,60 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="container grid">
+    <span>© {year} <span class="logo">Crypto Mundi</span></span>
+    <p class="warning">
+      Crypto Mundi est éducatif et ne constitue pas une offre de vente ni une
+      sollicitation d'achat de valeurs mobilières. Crypto Mundi n'est pas un
+      conseiller financier, un gestionnaire de portefeuille ni un comptable. Le
+      seul but de Crypto Mundi est de guider votre éducation. Ceci ne constitue
+      pas un conseil financier, un conseil en investissement ni un conseil
+      fiscal. Aucune des informations transmises via ce site internet ne
+      constitue une recommandation d'achat, de détention ou de vente d'un
+      investissement ou produit financier, ni une incitation à agir. Aucune des
+      informations transmises via cette application ne devrait servir de base à
+      une décision d'investissement. Tous les investissements comportent des
+      risques, y compris la perte éventuelle de capital. Les performances
+      passées ne garantissent pas les résultats ou les rendements futurs.
+    </p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--blue-950);
+    padding: 80px 0;
+    margin-top: 80px;
+
+    @media screen and (max-width: 768px) {
+      padding: 40px 0;
+      margin-top: 40px;
+    }
+  }
+
+  .logo {
+    font-weight: 800;
+    color: var(--logo);
+  }
+
+  .warning {
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.15;
+    text-align: justify;
+
+    @media screen and (max-width: 768px) {
+      margin-top: 24px;
+      line-height: 1.225;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 4fr 9fr;
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,11 @@
+const projectId = import.meta.env.PUBLIC_SANITY_PROJECT_ID;
+const version = import.meta.env.PUBLIC_SANITY_API_VERSION;
+const dataSet = import.meta.env.PUBLIC_SANITY_DATASET;
+
+const config = {
+  mode: dataSet,
+  projectId,
+  sanityGraphqlEndpoint: `https://${projectId}.api.sanity.io/${version}/graphql/${dataSet}/default`,
+};
+
+export default config;
