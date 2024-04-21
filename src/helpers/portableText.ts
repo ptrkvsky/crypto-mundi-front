@@ -12,6 +12,15 @@ const customComponents = {
           
         </figure>`;
     },
+
+    blockHighlight: (blockHighlight: any) => {
+      return `<p class="blockHighlight">
+        <span class="guillemet"><img src="/assets/svg/quote.svg"></span>
+          
+          ${blockHighlight.value.text}
+          
+        </p>`;
+    },
   },
 
   marks: {
@@ -19,7 +28,6 @@ const customComponents = {
     internalLink: ({ value, text }: any) => {
       const slug = value.slug.current;
       const { title } = value;
-      console.log(value);
 
       return `<a title="${title}" href="${slug}">
           ${text}

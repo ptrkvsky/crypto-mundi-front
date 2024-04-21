@@ -68,7 +68,8 @@ const canonical = `${config.url}/article/${post.slug.current}`;
 
     <PortableText portableText={post.body} />
   </div>
-  <style>
+
+  <style is:global>
     .post-image {
       margin: 48px 0;
       border-radius: 40px;
@@ -93,6 +94,31 @@ const canonical = `${config.url}/article/${post.slug.current}`;
 
     .author {
       color: var(--blue-500);
+    }
+
+    .blockHighlight {
+      color: var(--blue-500);
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1.5;
+      position: relative;
+      padding: 0 8px 0 32px;
+      margin: 40px 0;
+
+      @media screen and (max-width: 980px) {
+        margin: 32px 0;
+        line-height: 1.4;
+      }
+
+      .guillemet {
+        position: absolute;
+        top: -6px;
+        left: 0;
+        font-size: 1.5em;
+        color: var(--blue-800);
+        font-family: var(--font-heading);
+        font-weight: 800;
+      }
     }
   </style>
 </Layout>
