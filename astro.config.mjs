@@ -23,4 +23,6 @@ export default defineConfig({
   redirects: {
     "/article/Link/": "/",
   },
+  base: "/",
+  trailingSlash: "never",
 });

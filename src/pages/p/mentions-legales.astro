@@ -1,13 +1,15 @@
 ---
 import { Layout } from "@features/layout/Layout";
 import "@styles/blog.css";
+import config from "src/config";
 
 const metaTitle = "Mentions légales du site Crypto Mundi";
 const metaDescription =
   "Consultez les mentions légales de Crypto Mundi pour en savoir plus sur nos politiques de confidentialité, conditions d'utilisation et informations légales.";
+const canonical = `${config.url}/p/mentions-legales`;
 ---
 
-<Layout title={metaTitle} description={metaDescription}>
+<Layout title={metaTitle} description={metaDescription} canonical={canonical}>
   <div class="post-container">
     <h2>Définitions</h2>
     <p>
@@ -51,8 +53,8 @@ const metaDescription =
     <p>
       En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la
       confiance dans l'économie numérique, il est précisé aux utilisateurs du
-      site internet <a href="https://www.crypto-mundi.com"
-        >https://www.crypto-mundi.com</a
+      site internet <a href="https://www.crypto-mundi.com">
+        https://www.crypto-mundi.com</a
       > l'identité des différents intervenants dans le cadre de sa réalisation et
       de son suivi:
     </p><p>

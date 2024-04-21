@@ -4,6 +4,7 @@ import { Layout } from "@features/layout/Layout";
 import { queryHome } from "@features/home/queries/queryHome.ts";
 import { SectionPosts } from "@features/blog/components/SectionPosts";
 import type { SanityHome } from "@features/home/interfaces/SanityHome";
+import config from "src/config";
 
 const dataHome = await fetchSanity<SanityHome>(queryHome);
 const posts = dataHome?.allPost ?? [];
@@ -13,6 +14,6 @@ const description =
   "Restez informé avec les dernières actualités sur les crypto-monnaies. Analyses, tendances et nouvelles sur Bitcoin, Ethereum et plus encore sur Crypto Mundi.";
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} canonical={config.url}>
   <SectionPosts posts={posts} />
 </Layout>
