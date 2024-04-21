@@ -20,4 +20,7 @@ export default defineConfig({
     react(),
     sitemap(),
   ],
+  redirects: {
+    "/article/Link/": "/",
+  },
 });
