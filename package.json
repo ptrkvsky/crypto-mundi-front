@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/check": "^0.5.10",
     "@astrojs/react": "^3.3.0",
+    "@astrojs/sitemap": "^3.1.4",
     "@fontsource-variable/domine": "^5.0.18",
     "@fontsource-variable/plus-jakarta-sans": "^5.0.20",
     "@portabletext/to-html": "^2.0.13",
