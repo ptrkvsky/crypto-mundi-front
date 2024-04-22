@@ -1,4 +1,5 @@
 import { buildSanityImage } from "@helpers/buildSanityImage";
+import { extractYouTubeId } from "@helpers/extractYoutubeId";
 import { portableTextToHtml } from "astro-sanity";
 
 const customComponents = {
@@ -20,6 +21,12 @@ const customComponents = {
           ${blockHighlight.value.text}
           
         </p>`;
+    },
+
+    blockYoutube: (blockYoutube: any) => {
+      const videoid = extractYouTubeId(blockYoutube.value.url);
+
+      return `<div class="youtube-container"><iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/PnTEFjpOyuM?si=${videoid}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>`;
     },
   },
 
