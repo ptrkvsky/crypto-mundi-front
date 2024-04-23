@@ -1,22 +1,24 @@
 ---
-import type { Post } from "src/generated/graphql";
 import { CardPost } from "@features/blog/components/CardPost";
 import { SectionTitle } from "@features/blog/components/SectionTitle";
 import { SectionLabel } from "@features/blog/components/SectionLabel";
+import type { Post } from "@interfaces/Post";
 
 interface Props {
+  label: string;
+  title: string;
   posts: Post[];
 }
 
-const { posts } = Astro.props;
+const { posts, label, title } = Astro.props;
 ---
 
 <section>
   <header class="header">
-    <div class="wrapper-title">
-      <SectionLabel>Les derniers</SectionLabel>
-      <SectionTitle>Articles.</SectionTitle>
-    </div>
+    <h2 class="wrapper-title">
+      <SectionLabel>{label}</SectionLabel>
+      <SectionTitle>{title}</SectionTitle>
+    </h2>
   </header>
   <div class="posts">
     {posts.map((post) => <CardPost post={post} />)}

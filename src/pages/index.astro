@@ -1,13 +1,16 @@
 ---
-import fetchSanity from "@helpers/fetchSanity";
 import { Layout } from "@features/layout/Layout";
 import { queryHome } from "@features/home/queries/queryHome.ts";
 import { SectionPosts } from "@features/blog/components/SectionPosts";
-import type { SanityHome } from "@features/home/interfaces/SanityHome";
 import config from "src/config";
+import { sanityClient } from "@helpers/sanityClient";
+import type { Post } from "@interfaces/Post";
 
-const dataHome = await fetchSanity<SanityHome>(queryHome);
-const posts = dataHome?.allPost ?? [];
+const sanityPosts = await sanityClient.fetch<Post[]>(queryHome);
+// split sanityPosts into two arrays, one array with typePost = "Article" and the rest in another array
+const articles = sanityPosts.filter((post) => post.typePost === "Article");
+const news = sanityPosts.filter((post) => post.typePost !== "Article");
+
 const title =
   "Actualités Crypto - Toutes les dernières nouvelles sur les crypto-monnaies | Crypto Mundi";
 const description =
@@ -15,5 +18,6 @@ const description =
 ---
 
 <Layout title={title} description={description} canonical={config.url}>
-  <SectionPosts posts={posts} />
+  <SectionPosts label="les dernières" title="Actualités" posts={news} />
+  <SectionPosts label="les derniers" title="Articles" posts={articles} />
 </Layout>
