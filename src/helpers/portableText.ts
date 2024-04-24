@@ -14,7 +14,13 @@ const customComponents = {
           
         </figure>`;
     },
-
+    blockDiscover: (blockDiscover: any) => {
+      console.log(blockDiscover.value);
+      return `<p class="blockHighlight">
+        <span class="guillemet"><img role="presentation" alt="" src="/assets/svg/quote.svg"></span>
+          ${blockDiscover.value.text}
+        </p>`;
+    },
     blockHighlight: (blockHighlight: any) => {
       return `<p class="blockHighlight">
         <span class="guillemet"><img role="presentation" alt="" src="/assets/svg/quote.svg"></span>
@@ -39,14 +45,25 @@ const customComponents = {
   },
 
   marks: {
-    // Ex. 2: rendering a custom `link` annotation
     internalLink: ({ value, text }: any) => {
-      const slug = value.slug.current;
+      const slug = value?.slug?.current;
       const { title } = value;
 
-      return `<a title="${title}" href="${slug}">
+      if (slug && title)
+        return `<a title="${title}" href="${slug}">
           ${text}
         </a>`;
+    },
+    discover: ({ text, value }: any) => {
+      const slug = value?.slug;
+      const { title } = value;
+
+      if (slug && title)
+        return `<p class="discover">
+        <span class="decouvrir">Découvrir :</span>
+        <a title="${title}" href="${slug}">
+          ${text}
+        </a></p>`;
     },
   },
 };

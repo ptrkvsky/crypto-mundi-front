@@ -15,10 +15,15 @@ export const queryAllPosts = `*[_type == "post"]{
     markDefs[]{
       ...,
       _type == "internalLink" => {
-        "slug": @.reference->slug,
+        "slug": @.reference->slug.current,
         "title": @.reference->title
-      }
-    }
+      },
+      _type == "discover" => {
+        "slug": @.reference->slug.current,
+        "title": @.reference->title
+      },
+    },
+
   }
 }
 `;
