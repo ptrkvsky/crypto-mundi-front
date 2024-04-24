@@ -17,10 +17,8 @@ const customComponents = {
 
     blockHighlight: (blockHighlight: any) => {
       return `<p class="blockHighlight">
-        <span class="guillemet"><img src="/assets/svg/quote.svg"></span>
-          
+        <span class="guillemet"><img role="presentation" alt="" src="/assets/svg/quote.svg"></span>
           ${blockHighlight.value.text}
-          
         </p>`;
     },
 
