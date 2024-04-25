@@ -15,7 +15,6 @@ const customComponents = {
         </figure>`;
     },
     blockDiscover: (blockDiscover: any) => {
-      console.log(blockDiscover.value);
       return `<p class="blockHighlight">
         <span class="guillemet"><img role="presentation" alt="" src="/assets/svg/quote.svg"></span>
           ${blockDiscover.value.text}
@@ -45,13 +44,15 @@ const customComponents = {
   },
 
   marks: {
-    internalLink: ({ value, text }: any) => {
-      const slug = value?.slug?.current;
-      const { title } = value;
+    internalLink: (internalLink: any) => {
+      const slugCurrent = internalLink?.value?.slug?.current;
+      const slug = internalLink?.value?.slug;
+      const { title } = internalLink?.value;
 
-      if (slug && title)
-        return `<a title="${title}" href="${slug}">
-          ${text}
+      console.log(slug, title);
+      if ((slug || slugCurrent) && title)
+        return `<a title="${title}" href="${slug ?? slugCurrent}">
+          ${internalLink.text}
         </a>`;
     },
     discover: ({ text, value }: any) => {
