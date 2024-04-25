@@ -9,12 +9,17 @@ interface Props {
 }
 
 const { post } = Astro.props;
+
+// limit post summary to 34 words
+if (post.summary.split(" ").length > 34) {
+  post.summary = post.summary.split(" ").slice(0, 34).join(" ") + "...";
+}
 ---
 
 <article class="post">
-  {
-    post?.thumbnailUrl && (
-      <a class="wrapper-image" href={`/article/${post.slug}`}>
+  <a class="wrapper-content" href={`/article/${post.slug}`}>
+    {
+      post?.thumbnailUrl && (
         <Image
           class="illu"
           alt={post.title ?? ""}
@@ -22,88 +27,108 @@ const { post } = Astro.props;
           widths={[357, 452]}
           inferSize
         />
-      </a>
-    )
-  }
-  <div class="card-content">
-    <h3>{post.title}</h3>
+      )
+    }
+    <div class="card-content">
+      <h3>{post.title}</h3>
 
-    <div class="card-bottom">
-      <time>
-        <img class="clock" src={clock.src} alt="clock" />
-        <span></span>{post.readingTime} min.
-      </time>
+      <div>
+        <p class="summary">{post.summary}</p>
 
-      <date>
-        {getDateFR(post._createdAt)}
-      </date>
+        <div class="card-bottom">
+          <time>
+            <img class="clock" src={clock.src} alt="clock" />
+            <span></span>{post.readingTime} min.
+          </time>
+
+          <date>
+            {getDateFR(post._createdAt)}
+          </date>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <style>
-    .post {
-      border-top-left-radius: 40px;
-      border-top-right-radius: 40px;
-      border-bottom-left-radius: 40px;
-      border-bottom-right-radius: 40px;
-      overflow: hidden;
-      border: 1px solid var(--blue-100);
-      transition: all 0.7s ease-out;
-
-      &:hover {
-        box-shadow: 0 0 40px var(--blue-100);
-      }
-    }
-
-    .wrapper-image {
-      display: block;
-    }
-
-    .illu {
-      object-fit: cover;
-    }
-
-    img {
-    }
-
-    .clock {
-      max-width: 24px;
-    }
-
-    .card-bottom {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .card-bottom {
-      margin-top: 32px;
-    }
-
-    time {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      color: var(--blue-900);
-      gap: 4px;
-    }
-
-    date {
-      text-align: right;
-      color: var(--blue-900);
-      font-size: 14px;
-    }
-
-    .card-content {
-      padding: 24px 40px 40px 40px;
-    }
-
-    h3 {
-      letter-spacing: -1.28px;
-      margin-top: 0;
-      margin-bottom: 16px;
-      font-size: 28px;
-      font-weight: 300;
-      line-height: 1.2;
-    }
-  </style>
+  </a>
 </article>
+
+<style>
+  .post {
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    overflow: hidden;
+    border: 1px solid var(--blue-100);
+    transition: all 0.7s ease-out;
+
+    &:hover {
+      box-shadow: 0 0 40px var(--blue-100);
+    }
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .summary {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--blue-900);
+  }
+
+  .wrapper-content {
+    display: block;
+    height: 100%;
+  }
+
+  .illu {
+    object-fit: cover;
+  }
+
+  img {
+  }
+
+  .clock {
+    max-width: 24px;
+  }
+
+  .card-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card-bottom {
+    margin-top: 32px;
+  }
+
+  time {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: var(--blue-900);
+    gap: 4px;
+  }
+
+  date {
+    text-align: right;
+    color: var(--blue-900);
+    font-size: 14px;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 40px 40px 40px;
+  }
+
+  h3 {
+    letter-spacing: -1.28px;
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--blue-950);
+  }
+</style>
