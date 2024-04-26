@@ -11,7 +11,6 @@ const customComponents = {
 
       return `<figure>
           <img loading="lazy" src="${imgSrc}" alt="" />
-          
         </figure>`;
     },
     blockDiscover: (blockDiscover: any) => {

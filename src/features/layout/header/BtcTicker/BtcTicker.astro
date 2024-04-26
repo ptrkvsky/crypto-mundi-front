@@ -6,19 +6,6 @@ import btc from "../../../../assets/btc.svg";
 const btcPrice = await updateBitcoinPrice();
 ---
 
-<script>
-  import { updateBitcoinPrice } from "@features/layout/header/Header/Header.functions";
-  // update bicoin price every 30 seconds
-
-  setInterval(async () => {
-    const btcPrice = await updateBitcoinPrice();
-    const tickerElement = document.getElementById("btc_price");
-    if (tickerElement) {
-      tickerElement.innerText = `${btcPrice} $`;
-    }
-  }, 30000);
-</script>
-
 <p class="btc-ticker">
   <img
     loading="eager"
