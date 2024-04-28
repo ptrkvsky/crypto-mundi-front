@@ -8,6 +8,7 @@ export const queryHome = `*[_type == "post" && isHome == true && publishedAt != 
   title,
   "slug": slug.current,
   summary,
+  _updatedAt,
   "typePost": type->title
 }
 `;

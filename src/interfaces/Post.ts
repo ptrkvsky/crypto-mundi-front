@@ -9,4 +9,5 @@ export interface Post {
   seoImageUrl: string;
   readingTime: number;
   _createdAt: string;
+  _updatedAt: string;
 }
