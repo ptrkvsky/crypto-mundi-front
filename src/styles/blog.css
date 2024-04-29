@@ -31,8 +31,20 @@ h1 {
   font-size: 18px;
   line-height: 28px;
 
-  p {
-    margin-bottom: 20px;
+  p,
+  blockquote,
+  ul,
+  ol,
+  pre,
+  table {
+    margin: 20px 0;
+  }
+
+  blockquote {
+    padding: 0 0 0 20px;
+    border-left: 4px solid var(--blue-200);
+    color: var(--blue-800);
+    font-style: italic;
   }
 
   a {
