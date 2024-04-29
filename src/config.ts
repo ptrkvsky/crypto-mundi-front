@@ -15,10 +15,10 @@ const config = {
  * Defines the configuration for PWA webmanifest.
  */
 export const manifest: Partial<ManifestOptions> = {
-  name: "Johan Petrikovsky développeur React Freelance", // Change this to your website's name.
-  short_name: "Site de Johan Petrikovsky", // Change this to your website's short name.
+  name: "Crypto Mundi", // Change this to your website's name.
+  short_name: "Crypto Mundi", // Change this to your website's short name.
   description:
-    "Johan Petrikovsky est un développeur React et Typescript Freelance.", // Change this to your websites description.
+    "Restez informé avec les dernières actualités sur les crypto-monnaies. Analyses, tendances et nouvelles sur Bitcoin, Ethereum et plus encore sur Crypto Mundi.", // Change this to your websites description.
   theme_color: "#30E130", // Change this to your primary color.
   background_color: "#ffffff", // Change this to your background color.
   display: "minimal-ui",
