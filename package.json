@@ -38,6 +38,7 @@
     "@vite-pwa/astro": "^0.3.1",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "vite-plugin-pwa": "^0.19.8"
   }
 }
