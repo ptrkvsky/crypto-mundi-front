@@ -5,7 +5,7 @@ const version = import.meta.env.PUBLIC_SANITY_API_VERSION;
 const dataSet = import.meta.env.PUBLIC_SANITY_DATASET;
 
 const config = {
-  url: "https://crypto-mundi.com",
+  url: "https://www.crypto-mundi.com",
   mode: dataSet,
   projectId,
   sanityGraphqlEndpoint: `https://${projectId}.api.sanity.io/${version}/graphql/${dataSet}/default`,
