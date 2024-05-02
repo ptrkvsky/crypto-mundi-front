@@ -83,6 +83,10 @@ if (post.summary.split(" ").length > 34) {
 
   .illu {
     object-fit: cover;
+    aspect-ratio: 5/3;
+    @media screen and (min-width: 768px) {
+      aspect-ratio: 4/3;
+    }
   }
 
   img {
