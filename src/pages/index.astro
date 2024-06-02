@@ -5,11 +5,13 @@ import { SectionPosts } from "@features/blog/components/SectionPosts";
 import config from "src/config";
 import { sanityClient } from "@helpers/sanityClient";
 import type { Post } from "@interfaces/Post";
+import StructuredData from "@features/home/components/StructuredData.astro";
 
 const sanityPosts = await sanityClient.fetch<Post[]>(queryHome);
 // split sanityPosts into two arrays, one array with typePost = "Article" and the rest in another array
-const articles = sanityPosts.filter((post) => post.typePost === "Article");
 const news = sanityPosts.filter((post) => post.typePost !== "Article");
+
+const articles = sanityPosts.filter((post) => post.typePost === "Article");
 
 const title =
   "Actualités Crypto - Toutes les dernières nouvelles sur les crypto-monnaies | Crypto Mundi";
@@ -20,4 +22,5 @@ const description =
 <Layout title={title} description={description} canonical={config.url}>
   <SectionPosts label="les dernières" title="Actualités" posts={news} />
   <SectionPosts label="les derniers" title="Articles" posts={articles} />
+  <!-- <StructuredData /> -->
 </Layout>

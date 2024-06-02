@@ -14,9 +14,11 @@ const customComponents = {
         </figure>`;
     },
     blockDiscover: (blockDiscover: any) => {
+      console.log(blockDiscover.value.discover.reference.title);
       return `<p class="blockHighlight">
         <span class="guillemet"><img role="presentation" alt="" src="/assets/svg/quote.svg"></span>
-          ${blockDiscover.value.text}
+          Découvrir :
+          <a href="${blockDiscover.value.discover.reference.slug.current}">${blockDiscover.value.discover.reference.title}</a>
         </p>`;
     },
     blockHighlight: (blockHighlight: any) => {

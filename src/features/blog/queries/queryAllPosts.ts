@@ -15,15 +15,29 @@ export const queryAllPosts = `*[_type == "post"]{
     markDefs[]{
       ...,
       _type == "internalLink" => {
-        "slug": @.reference->slug.current,
-        "title": @.reference->title
-      },
-      _type == "discover" => {
-        "slug": @.reference->slug.current,
-        "title": @.reference->title
-      },
+        "reference": reference->{
+          title,
+          slug
+        }
+      }
     },
-
+    _type == "blockDiscover" => {
+      discover {
+        reference-> {
+          title,
+          slug
+        }
+      }
+    },
+    _type == "blockHighlight" => {
+      text
+    },
+    _type == "blockYoutube" => {
+      url
+    },
+    _type == "blockKeyTakeaways" => {
+      text
+    }
   }
 }
 `;

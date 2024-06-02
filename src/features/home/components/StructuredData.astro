@@ -1,0 +1,43 @@
+---
+import config, { manifest } from "src/config";
+---
+
+<script define:vars={{ config, manifest }} type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsMediaOrganization",
+    "name": manifest.siteName,
+    "url": "https://yoursite.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "${data.logoUrl}",
+      "width": "${data.logoWidth}",
+      "height": "${data.logoHeight}"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "${data.contactPhone}",
+      "contactType": "customer service"
+    },
+    "sameAs": [
+      "${data.socialMediaLink1}",
+      "${data.socialMediaLink2}"
+      // Add more social media links as needed
+    ],
+    "ethicsPolicy": "https://yoursite.com/ethics-policy",
+    "masthead": "https://yoursite.com/masthead",
+    "missionCoveragePrioritiesPolicy": "https://yoursite.com/mission-coverage-priorities-policy",
+    "diversityPolicy": "https://yoursite.com/diversity-policy",
+    "correctionsPolicy": "https://yoursite.com/corrections-policy",
+    "verificationFactCheckingPolicy": "https://yoursite.com/verification-fact-checking-policy",
+    "unnamedSourcesPolicy": "https://yoursite.com/unnamed-sources-policy",
+    "actionableFeedbackPolicy": "https://yoursite.com/actionable-feedback-policy"
+  }
+  
+</script>
+
+{
+  schema && (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  )
+}

@@ -3,6 +3,7 @@ import type { ManifestOptions } from "vite-plugin-pwa";
 const projectId = import.meta.env.PUBLIC_SANITY_PROJECT_ID;
 const version = import.meta.env.PUBLIC_SANITY_API_VERSION;
 const dataSet = import.meta.env.PUBLIC_SANITY_DATASET;
+const token = import.meta.env.SANITY_SECRET_TOKEN;
 
 const config = {
   url: "https://www.crypto-mundi.com",
