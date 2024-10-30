@@ -1,5 +1,12 @@
 ---
 import config, { manifest } from "src/config";
+interface Props {
+
+  schema?: any;
+}
+
+const {  schema } = Astro.props;
+
 ---
 
 <script define:vars={{ config, manifest }} type="application/ld+json">
@@ -38,6 +45,6 @@ import config, { manifest } from "src/config";
 
 {
   schema && (
-    // <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   )
 }
