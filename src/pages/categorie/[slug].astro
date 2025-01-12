@@ -1,0 +1,37 @@
+---
+import { queryAllCategories } from "@features/blog/queries/queryAllCategories";
+import { Layout } from "@features/layout/Layout";
+import "@styles/blog.css";
+import type { Category } from "@interfaces/Category";
+import { fetchAllCategories } from "@features/blog/services/fetchAllCategories";
+
+export async function getStaticPaths() {
+  const sanityCategories = await fetchAllCategories();
+
+  return sanityCategories?.map((category) => ({
+    params: {
+      slug: category?.slug,
+    },
+    props: {
+      category,
+    },
+  }));
+}
+
+interface Props {
+  category: Category;
+}
+
+const { category } = Astro.props;
+
+// const image = `${post?.mainImageUrl}?auto=format&max-w=650`;
+// const canonical = `${config.url}/article/${post.slug.current}`;
+---
+
+<Layout
+  canonical={""}
+  title={category.title ?? ""}
+  description={category.title ?? ""}
+>
+  test
+</Layout>

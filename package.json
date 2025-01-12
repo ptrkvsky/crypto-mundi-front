@@ -11,9 +11,9 @@
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.10",
-    "@astrojs/react": "^3.3.0",
-    "@astrojs/sitemap": "^3.1.4",
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/react": "^4.1.2",
+    "@astrojs/sitemap": "^3.2.1",
     "@fontsource-variable/domine": "^5.0.18",
     "@fontsource-variable/plus-jakarta-sans": "^5.0.20",
     "@portabletext/to-html": "^2.0.13",
@@ -24,7 +24,7 @@
     "@sanity/types": "^3.37.2",
     "@types/react": "^18.2.78",
     "@types/react-dom": "^18.2.25",
-    "astro": "^4.6.1",
+    "astro": "^5.1.2",
     "astro-portabletext": "^0.9.8",
     "astro-sanity": "^1.1.7",
     "graphql": "^16.8.1",
@@ -36,7 +36,7 @@
     "@graphql-codegen/cli": "5.0.2",
     "@graphql-codegen/typescript": "4.0.6",
     "@vite-pwa/astro": "^0.3.1",
-    "prettier": "^3.2.5",
+    "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.13.0",
     "typescript": "^5.4.5",
     "vite-plugin-pwa": "^0.19.8"

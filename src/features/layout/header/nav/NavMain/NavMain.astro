@@ -1,0 +1,34 @@
+---
+import NavItem from "@features/layout/header/nav/NavItem/NavItem.astro";
+import { fetchAllCategories } from "@features/blog/services/fetchAllCategories";
+
+const sanityCategories = await fetchAllCategories();
+---
+
+<nav class="nav">
+  <ul class="nav-list">
+    {
+      sanityCategories.map((category) => (
+        <NavItem title={category.title} slug={`/categorie/${category.slug}`} />
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+</style>

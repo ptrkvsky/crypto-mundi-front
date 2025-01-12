@@ -1,0 +1,12 @@
+---
+interface Props {
+  title: string;
+  slug: string;
+}
+
+const { title, slug } = Astro.props;
+---
+
+<li class="nav-item">
+  <a href={slug} class="nav-link">{title}</a>
+</li>
