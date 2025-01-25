@@ -8,5 +8,29 @@ const { title, slug } = Astro.props;
 ---
 
 <li class="nav-item">
-  <a href={slug} class="nav-link">{title}</a>
+  <a class="nav-link" href={slug} class="nav-link">{title}</a>
 </li>
+
+
+<style>
+  .nav-item {
+    margin-right: 16px;
+     &:last-child {
+      margin-right: 0;
+    }
+  }
+  .nav-link {
+    font-weight: 800;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.2s linear;
+    color: var(--blue-950);
+
+    &:hover {
+      color: var(--blue-500);
+    }
+  }
+
+</style>
+
+

@@ -26,12 +26,8 @@ interface Props {
 const { category } = Astro.props;
 
 const posts = await fetchPostsByCategory(category.slug);
-console.log(posts);
-
-// const image = `${post?.mainImageUrl}?auto=format&max-w=650`;
-// const canonical = `${config.url}/article/${post.slug.current}`;
-
-const title = `Actualités ${category.title}`;
+const descriptionSection = category?.description ?? "";
+const titleSection = `Actualités ${category.title}`;
 ---
 
 <Layout
@@ -39,6 +35,6 @@ const title = `Actualités ${category.title}`;
   title={category.title ?? ""}
   description={category.title ?? ""}
 >
-  <SectionPosts label="les dernières" title={title} posts={posts} />
+  <SectionPosts description={descriptionSection} label="les dernières" title={titleSection} posts={posts} />
 
 </Layout>

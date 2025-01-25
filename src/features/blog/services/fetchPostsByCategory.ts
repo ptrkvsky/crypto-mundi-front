@@ -6,6 +6,9 @@ export async function fetchPostsByCategory(categorySlug: string) {
       slug,
       publishedAt,
       summary,
+      readingTime,
+      _createdAt,
+      "thumbnailUrl": thumbnail.asset->url,
       category->{title, slug}
     }`;
   const params = { categorySlug };
