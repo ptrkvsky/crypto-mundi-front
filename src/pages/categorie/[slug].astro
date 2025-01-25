@@ -1,9 +1,10 @@
 ---
-import { queryAllCategories } from "@features/blog/queries/queryAllCategories";
 import { Layout } from "@features/layout/Layout";
 import "@styles/blog.css";
 import type { Category } from "@interfaces/Category";
 import { fetchAllCategories } from "@features/blog/services/fetchAllCategories";
+import { fetchPostsByCategory } from "@features/blog/services/fetchPostsByCategory";
+import { SectionPosts } from "@features/blog/components/SectionPosts";
 
 export async function getStaticPaths() {
   const sanityCategories = await fetchAllCategories();
@@ -24,8 +25,13 @@ interface Props {
 
 const { category } = Astro.props;
 
+const posts = await fetchPostsByCategory(category.slug);
+console.log(posts);
+
 // const image = `${post?.mainImageUrl}?auto=format&max-w=650`;
 // const canonical = `${config.url}/article/${post.slug.current}`;
+
+const title = `Actualités ${category.title}`;
 ---
 
 <Layout
@@ -33,5 +39,6 @@ const { category } = Astro.props;
   title={category.title ?? ""}
   description={category.title ?? ""}
 >
-  test
+  <SectionPosts label="les dernières" title={title} posts={posts} />
+
 </Layout>
