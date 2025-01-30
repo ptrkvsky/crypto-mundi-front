@@ -41,24 +41,33 @@ const canonical = `${config.url}/article/${post.slug.current}`;
   description={post.seoDescription ?? ""}
   image={image}
 >
-  <div class="post-container">
     <h1>
       {post.title}
     </h1>
 
-    <p class="summary">{post.summary}</p>
+    <div class="grid-intro">
 
-    {
-      post?.mainImageUrl && (
-        <Image
-          loading="eager"
-          inferSize
-          alt={post.title ?? ""}
-          src={image}
-          class="post-image"
-        />
-      )
-    }
+      {
+        post?.mainImageUrl && (
+          <Image
+            loading="eager"
+            inferSize
+            alt={post.title ?? ""}
+            src={image}
+            class="post-image"
+          />
+        )
+      }
+      <div class="summary-wrapper">
+        <p class="summary">{post.summary}</p>
+      </div>
+    </div>
+
+
+<div class="post-container">
+
+
+
 
     <p>
       <span class="author">Johan Allard</span> • <date class="date"
@@ -70,6 +79,25 @@ const canonical = `${config.url}/article/${post.slug.current}`;
   </div>
 
   <style is:global>
+    .summary-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .grid-intro {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 32px;
+      max-width: 1280px;
+      margin: 0 auto;
+
+      @media screen and (max-width: 980px) {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
     strong {
       font-weight: bold;
       color: var(--blue-800);
@@ -87,7 +115,7 @@ const canonical = `${config.url}/article/${post.slug.current}`;
     .summary {
       font-size: 24px;
       line-height: 1.5;
-      margin: 40px 0 0 0;
+      margin-top: -40px;
 
       @media screen and (max-width: 980px) {
         font-size: 20px;
